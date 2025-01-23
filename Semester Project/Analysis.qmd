@@ -1,0 +1,487 @@
+---
+title: "Semester Project"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+execute:
+  keep-md: true
+  df-print: paged
+  warning: false
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    toc-location: left
+    toc-floating: true
+    code-fold: true
+    code-line-numbers: true
+editor_options:
+  chunk_output_type: console
+---
+
+## Predictive Analytics for Retail Industry Sales Using Forbes 
+
+**Background**
+The retail industry is marked by fierce competition and rapid changes in consumer preferences, which necessitate constant innovation in marketing and financial planning strategies. Predictive analytics can be a crucial tool for understanding and forecasting future market trends, helping companies stay ahead of the curve.
+
+In this study, we are focusing on utilizing a dataset compiled from Forbes, which includes annual sales, assets, and other financial indicators for various companies listed as top performers in the retail industry. The dataset spanned several years and provided an opportunity to explore the relationship between a company's assets and its sales performance.
+
+**Objective**
+The main objective of this project was to harness the power of predictive analytics to forecast the future sales of top retail companies based on their reported assets in previous years. By doing so, retail companies could better plan their operational and financial strategies to optimize both growth and profitability.
+
+**Data**
+The dataset included the following fields for each company, for multiple years:
+
+- `Company:` Name of the company.
+- `Industry:` Sector classification, with focus on "Retailing".
+- `Country:` Country of operation.
+- `Sales:` Annual sales figures (in USD).
+- `Profits:` Annual profit figures (in USD).
+- `Assets:` Total assets at the end of each fiscal year (in USD).
+- `Market Value:` Market valuation at the end of each fiscal year (in USD).
+- `Year:` Fiscal year of the reported figures.
+
+The data can be found  at `https://data.world/aroissues/forbes-global-2000-2008-2019`
+
+
+**Methodology**
+The project involved linear regression modeling to predict future sales based on the assets of the companies. Historical data from the Forbes dataset was used to:
+
+- Identify the top 5 performing companies in the retail industry for the latest available year based on sales.
+- Extract historical sales and asset data for these top companies.
+- Develop a predictive model using the historical assets to forecast sales for the following year.
+- Tools used included R programming with libraries such as `dplyr` for data manipulation, `ggplot2` for data visualization, and `plotly` for creating interactive plots.
+
+
+```{r,include=FALSE,echo=FALSE}
+library(readxl)
+library(tidyverse)
+library(dplyr)
+library(scales) 
+library(pander)
+library(pander)
+library(lubridate)
+library(ggplot2)
+library(httr)
+library(plotly)
+```
+
+```{r,include=FALSE,echo=FALSE}
+GET("https://query.data.world/s/gm7ou7jdqcmif7a6x4fvhcbcfvaifd?dws=00000", write_disk(tf <- tempfile(fileext = ".xlsx")))
+Forbes23 <- read_excel(tf) %>% 
+  mutate(year = 2023,
+         Rank_nr = as.numeric(Rank_nr))
+
+GET("https://query.data.world/s/qltl5s3l7ill7xyqgvwhtw3of2hhfe?dws=00000", write_disk(tf <- tempfile(fileext = ".xlsx")))
+Forbes22 <- read_excel(tf) %>% 
+    mutate(year = 2022,
+           Rank_nr = as.numeric(Rank_nr))
+
+GET("https://query.data.world/s/mica7ninyic2s35fxajthy5pqmczbo?dws=00000", write_disk(tf <- tempfile(fileext = ".xlsx")))
+Forbes21 <- read_excel(tf) %>% 
+    mutate(year = 2021,
+           Rank_nr = as.numeric(Rank_nr))
+
+GET("https://query.data.world/s/eaufuw3jnnvqo4kgdvjuqm2dvsxj7h?dws=00000", write_disk(tf <- tempfile(fileext = ".xlsx")))
+Forbes20 <- read_excel(tf) %>% 
+    mutate(year = 2020,
+           Rank_nr = as.numeric(Rank_nr))
+```
+
+```{r,include=FALSE,echo=FALSE}
+combined_forbes <- bind_rows(Forbes23, Forbes22, Forbes21, Forbes20) %>%
+  filter(Industry == "Retailing")
+combined_forbes2 <- bind_rows(Forbes23, Forbes22, Forbes21, Forbes20) %>% 
+  filter(!is.na(Sales),!is.na(Assets), !is.na(Market_Value), !is.na(Profits))
+
+combined_forbes <- combined_forbes %>%
+  mutate(Company = ifelse(Company == "Walgreens Boots Alliance", "Walgreens", Company))
+```
+
+## Sales: Top 5 companies in 2020-2023
+
+::: panel-tabset
+### 2020
+```{r}
+top_companies_2020 <- combined_forbes %>%
+  select(Company, Industry, Country, Sales, year) %>% 
+  filter(year == 2020) %>%
+  arrange(desc(Sales)) %>%
+  slice_head(n = 5) %>% 
+  mutate(Sales = dollar(Sales))
+pander(top_companies_2020)
+```
+
+### 2021
+
+```{r}
+top_companies_2021 <- combined_forbes %>%
+  select(Company, Industry, Country, Sales, year) %>% 
+  filter(year == 2021) %>%
+  arrange(desc(Sales)) %>%
+  slice_head(n = 5) %>% 
+  mutate(Sales = dollar(Sales))
+pander(top_companies_2021)
+```
+
+### 2022
+
+```{r}
+top_companies_2022 <- combined_forbes %>%
+  select(Company, Industry, Country, Sales, year) %>% 
+  filter(year == 2022) %>%
+  arrange(desc(Sales)) %>%
+  slice_head(n = 5) %>% 
+  mutate(Sales = dollar(Sales))
+pander(top_companies_2022)
+```
+
+### 2023
+
+```{r}
+top_companies_2023 <- combined_forbes %>% 
+  select(Company, Industry, Country, Sales,year) %>% 
+  filter(year == 2023) %>%
+  arrange(desc(Sales)) %>%
+  slice_head(n = 5) %>% 
+  mutate(Sales = dollar(Sales))
+pander(top_companies_2023)
+```
+:::
+## Top 5 companies sales over time
+
+```{r,include=FALSE,echo=FALSE}
+top_company_names <- unique(c(top_companies_2023$Company, top_companies_2022$Company,
+                              top_companies_2021$Company, top_companies_2020$Company))
+
+top_companies_data <- combined_forbes %>%
+  filter(Company %in% top_company_names)
+```
+
+```{r}
+gg <- ggplot(top_companies_data, aes(x = year, y = Sales*1000, color = Company, group = Company, text = paste(Company, "<br>Sales: $", scales::comma(Sales*1000), " million", sep = " "))) +
+  geom_line(size = 1, show.legend = F) +  
+  geom_point(size = 3, shape = 19, fill = "white", show.legend = T) +   
+  scale_color_brewer(palette = "Set2") +  
+  theme_minimal(base_size = 10) + 
+  theme(
+    plot.title = element_text(face = "bold", size = 14, hjust = 0),
+    axis.title.x = element_text(face = "bold", size = 14),
+    axis.title.y = element_text(face = "bold", size = 14),
+    legend.position = "bottom",
+    legend.title = element_blank(),  
+    panel.grid.major.x = element_blank(),  
+    panel.grid.minor.x = element_blank()
+  ) +
+  labs(
+    title = "Sales Performance of Top 5 Companies from 2020 to 2023",
+    x = "Year",
+    y = "Sales"
+  ) +
+  scale_x_continuous(breaks = seq(min(top_companies_data$year), max(top_companies_data$year), by = 1)) + 
+  scale_y_continuous(labels = label_comma())  
+
+interactive_plot <- ggplotly(gg, tooltip = "text")
+interactive_plot
+```
+
+
+
+## Predicting the Sales of Top 5 retail companies
+
+```{r,include=FALSE,echo=FALSE}
+historical_sales_data <- combined_forbes %>%
+  filter(Company %in% top_company_names) %>%
+  select(Company, year, Sales, Assets, Market_Value, Profits) %>%
+  arrange(Company, year)
+```
+
+```{r,include=FALSE,echo=FALSE}
+top_companies_2023 <- combined_forbes %>%
+  filter(year == 2023) %>%
+  arrange(desc(Sales)) %>%
+  slice_head(n = 5)
+
+top_company_names <- top_companies_2023$Company
+```
+
+```{r,include=FALSE,echo=FALSE}
+historical_data <- combined_forbes %>%
+  filter(Company %in% top_company_names) %>%
+  select(Company, year, Sales, Assets) %>%
+  arrange(Company, year)
+```
+
+#### Finding the Best Simple Linear Model
+
+::: panel-tabset
+#### Best fit 
+
+```{r}
+Assets_lm = lm(Sales ~ Assets, data = combined_forbes)
+pander(summary(Assets_lm))
+```
+
+$$
+  \underbrace{Y_i}_\text{2024 Sales} = \beta_0 + \beta_1 \underbrace{X_i}_\text{Assets} + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2) 
+$$
+
+#### Second Best
+
+```{r}
+MarketValue_lm = lm(Sales ~ Market_Value, data = combined_forbes)
+pander(summary(MarketValue_lm))
+```
+
+$$
+  \underbrace{Y_i}_\text{2024 Sales} = \beta_0 + \beta_1 \underbrace{X_i}_\text{Market Value} + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2) 
+$$
+
+#### Third Best
+
+```{r}
+Profit_lm = lm(Sales ~ Profits, data = combined_forbes)
+pander(summary(Profit_lm))
+```
+
+$$
+  \underbrace{Y_i}_\text{2024 Sales} = \beta_0 + \beta_1 \underbrace{X_i}_\text{Profits} + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2) 
+$$
+
+#### Not very useful
+
+```{r}
+year_lm = lm(Sales ~ year, data = combined_forbes)
+pander(summary(year_lm))
+```
+
+$$
+  \underbrace{Y_i}_\text{2024 Sales} = \beta_0 + \beta_1 \underbrace{X_i}_\text{Year} + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2) 
+$$
+
+:::
+
+```{r,include=FALSE,echo=FALSE}
+models <- historical_data %>%
+  group_by(Company) %>%
+  summarise(Model = list(lm(Sales ~ Assets, data = .)), .groups = 'drop')
+
+next_year <- max(historical_data$year) + 1
+
+latest_assets <- historical_data %>%
+  filter(year == max(year)) %>%
+  select(Company, Assets)
+```
+
+```{r,include=FALSE,echo=FALSE}
+
+predictions_data <- left_join(models, latest_assets, by = "Company")
+
+predictions <- predictions_data %>%
+  mutate(Predicted_Sales = predict(Model[[1]], newdata = data.frame(Assets = Assets)))
+
+predictions |> 
+  as.data.frame()
+```
+
+
+```{r,include=FALSE,echo=FALSE}
+top_company_names <- unique(c(top_companies_2023$Company, top_companies_2022$Company,
+                              top_companies_2021$Company, top_companies_2020$Company))
+
+predictions <- predictions %>%
+  select(Company, Predicted_Sales) %>%
+  mutate(year = next_year) %>% 
+  rename(Sales = Predicted_Sales)  
+
+combined_sales <- historical_data %>%
+  bind_rows(predictions) %>%
+  arrange(Company, year)
+
+```
+
+```{r}
+combined_sales <- combined_sales %>%
+  mutate(Sales_Millions = Sales * 1000,  
+         Type = ifelse(year == next_year, "Prediction", "Historical"))
+
+gg <- ggplot(combined_sales, aes(x = year, y = Sales_Millions, color = Company, group = Company,
+                                 text = paste(Company, "<br>Sales: $", comma(Sales_Millions), " million"))) +
+  geom_line(size = 1, show.legend = TRUE) +
+  geom_point(size = 3, shape = 19, fill = "white", show.legend = FALSE) + 
+  scale_size_continuous(guide = 'none') +  
+  scale_color_brewer(palette = "Set2") +
+  theme_minimal(base_size = 10) +
+  theme(
+    plot.title = element_text(face = "bold", size = 14, hjust = 0.5),
+    axis.title.x = element_text(face = "bold", size = 14),
+    axis.title.y = element_text(face = "bold", size = 14),
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank()
+  ) +
+  labs(
+    title = "Historical and Predicted Sales for Top 5 Companies",
+    x = "Year",
+    y = "Sales"
+  ) +
+  scale_x_continuous(breaks = seq(min(combined_sales$year), max(combined_sales$year), by = 1)) +  
+  scale_y_continuous(labels = label_comma())  
+
+interactive_plot <- ggplotly(gg, tooltip = "text")
+interactive_plot
+
+```
+
+
+Above you can see that ``Walmart`` faced a large drop in Sales. This was caused by their lack of assets. While the drop in sales is unlikely for Walmart, it will be interesting to see how the model does once we have 2024 actuals. 
+
+
+
+
+**Summary**
+
+While there are many factors that keep a company in business it is important to understand what is driving the company's success. ``Sales`` is one of the most important areas for success in a business. It goes without say that there are many other factors that can contribute to the success of a company. In our model we had limited data, but with what we had we found that the best predictor of future sales was ``Assets``. This makes sense, if a company has no cash, no inventory, or no property, etc. then it is pretty difficult to generate sales. 
+
+
+
+Below I provided some more insights to the data for those interested. 
+
+
+:::panel-tabset
+
+### Hide
+### More insights
+::::panel-tabset
+
+### Industry Comparisons
+
+```{r,include=FALSE,echo=FALSE}
+by_industry <- combined_forbes2 %>%
+  select(Company, Industry, Country, Sales, Assets, Profits, Market_Value, year) %>% 
+  group_by(Industry) %>%
+  summarise(TotalSales = sum(Sales), 
+            TotalProfits = sum(Profits), 
+            TotalAssets = sum(Assets),
+            TotalMarketValue = sum(Market_Value)) %>%
+  arrange(desc(TotalSales)) %>% 
+  slice_head(n = 10)
+
+pander(by_industry)
+```
+
+```{r}
+ggplot(by_industry, aes(x = reorder(Industry, TotalSales), y = TotalSales)) +
+  geom_bar(stat = "identity", fill = "firebrick") +
+  labs(title = "Top 10 Industries by Total Sales",
+       x = "Industry",
+       y = "Total Sales") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = dollar_format()) +
+  coord_flip()
+```
+
+```{r}
+ggplot(by_industry, aes(x = reorder(Industry, TotalProfits), y = TotalProfits)) +
+  geom_bar(stat = "identity", fill = "firebrick") +
+  labs(title = "Top 10 Industries by Total Profits",
+       x = "Industry",
+       y = "Total Profits") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = dollar_format()) +
+  coord_flip()
+```
+
+```{r}
+ggplot(by_industry, aes(x = reorder(Industry, TotalAssets), y = TotalAssets)) +
+  geom_bar(stat = "identity", fill = "firebrick") +
+  labs(title = "Top 10 Industries by Total Assets",
+       x = "Industry",
+       y = "Total Assets") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = dollar_format()) +
+  coord_flip()
+```
+
+```{r}
+ggplot(by_industry, aes(x = reorder(Industry, TotalMarketValue), y = TotalMarketValue)) +
+  geom_bar(stat = "identity", fill = "firebrick") +
+  labs(title = "Top 10 Industries by Total Market Value",
+       x = "Industry",
+       y = "Total Market Value") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = dollar_format()) +
+  coord_flip()
+```
+
+
+### Country Comparisons
+
+```{r,include=FALSE,echo=FALSE}
+by_country <- combined_forbes2 %>%
+  select(Company, Industry, Country, Sales, Assets, Profits, Market_Value, year) %>% 
+  group_by(Country) %>%
+  summarise(TotalSales = sum(Sales), 
+            TotalProfits = sum(Profits), 
+            TotalAssets = sum(Assets),
+            TotalMarketValue = sum(Market_Value)) %>%
+  arrange(desc(TotalSales)) %>% 
+  slice_head(n = 10)
+
+pander(by_country)
+```
+
+```{r}
+ggplot(by_country, aes(x = reorder(Country, TotalSales), y = TotalSales)) +
+  geom_bar(stat = "identity", fill = "dodgerblue") +
+  labs(title = "Top 10 Countries by Total Sales",
+       x = "Country",
+       y = "Total Sales") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = dollar_format()) +
+  coord_flip()
+```
+
+```{r}
+ggplot(by_country, aes(x = reorder(Country, TotalProfits), y = TotalProfits)) +
+  geom_bar(stat = "identity", fill = "dodgerblue") +
+  labs(title = "Top 10 Countries by Total Profits",
+       x = "Country",
+       y = "Total Profits") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = dollar_format()) +
+  coord_flip()
+```
+
+```{r}
+ggplot(by_country, aes(x = reorder(Country, TotalAssets), y = TotalAssets)) +
+  geom_bar(stat = "identity", fill = "dodgerblue") +
+  labs(title = "Top 10 Countries by Total Assets",
+       x = "Country",
+       y = "Total Assets") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = dollar_format()) +
+  coord_flip()
+```
+
+```{r}
+ggplot(by_country, aes(x = reorder(Country, TotalMarketValue), y = TotalMarketValue)) +
+  geom_bar(stat = "identity", fill = "dodgerblue") +
+  labs(title = "Top 10 Countries by Total Market Value",
+       x = "Country",
+       y = "Total Market Value") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = dollar_format()) +
+  coord_flip()
+```
+
+::::
+It appears that when ``Total Sales`` is high ``Profits``,``Assets``, and ``Market Value`` all tend to follow a similar pattern. 
+:::

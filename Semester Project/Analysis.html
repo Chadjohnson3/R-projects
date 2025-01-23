@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2025-01-23">
+
+<title>Semester Project</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Analysis_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Analysis_files/libs/quarto-html/quarto.js"></script>
+<script src="Analysis_files/libs/quarto-html/popper.min.js"></script>
+<script src="Analysis_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Analysis_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Analysis_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Analysis_files/libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Analysis_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Analysis_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Analysis_files/libs/bootstrap/bootstrap-5bdc1ec511977dd36301403cf8f4f68d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="Analysis_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="Analysis_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="Analysis_files/libs/plotly-binding-4.10.4/plotly.js"></script>
+
+<script src="Analysis_files/libs/typedarray-0.1/typedarray.min.js"></script>
+
+<script src="Analysis_files/libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="Analysis_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="Analysis_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+<link href="Analysis_files/libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="Analysis_files/libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+<link href="Analysis_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+
+<script src="Analysis_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#predictive-analytics-for-retail-industry-sales-using-forbes" id="toc-predictive-analytics-for-retail-industry-sales-using-forbes" class="nav-link active" data-scroll-target="#predictive-analytics-for-retail-industry-sales-using-forbes">Predictive Analytics for Retail Industry Sales Using Forbes</a></li>
+  <li><a href="#sales-top-5-companies-in-2020-2023" id="toc-sales-top-5-companies-in-2020-2023" class="nav-link" data-scroll-target="#sales-top-5-companies-in-2020-2023">Sales: Top 5 companies in 2020-2023</a></li>
+  <li><a href="#top-5-companies-sales-over-time" id="toc-top-5-companies-sales-over-time" class="nav-link" data-scroll-target="#top-5-companies-sales-over-time">Top 5 companies sales over time</a></li>
+  <li><a href="#predicting-the-sales-of-top-5-retail-companies" id="toc-predicting-the-sales-of-top-5-retail-companies" class="nav-link" data-scroll-target="#predicting-the-sales-of-top-5-retail-companies">Predicting the Sales of Top 5 retail companies</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Semester Project</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 23, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="predictive-analytics-for-retail-industry-sales-using-forbes" class="level2">
+<h2 class="anchored" data-anchor-id="predictive-analytics-for-retail-industry-sales-using-forbes">Predictive Analytics for Retail Industry Sales Using Forbes</h2>
+<p><strong>Background</strong> The retail industry is marked by fierce competition and rapid changes in consumer preferences, which necessitate constant innovation in marketing and financial planning strategies. Predictive analytics can be a crucial tool for understanding and forecasting future market trends, helping companies stay ahead of the curve.</p>
+<p>In this study, we are focusing on utilizing a dataset compiled from Forbes, which includes annual sales, assets, and other financial indicators for various companies listed as top performers in the retail industry. The dataset spanned several years and provided an opportunity to explore the relationship between a company’s assets and its sales performance.</p>
+<p><strong>Objective</strong> The main objective of this project was to harness the power of predictive analytics to forecast the future sales of top retail companies based on their reported assets in previous years. By doing so, retail companies could better plan their operational and financial strategies to optimize both growth and profitability.</p>
+<p><strong>Data</strong> The dataset included the following fields for each company, for multiple years:</p>
+<ul>
+<li><code>Company:</code> Name of the company.</li>
+<li><code>Industry:</code> Sector classification, with focus on “Retailing”.</li>
+<li><code>Country:</code> Country of operation.</li>
+<li><code>Sales:</code> Annual sales figures (in USD).</li>
+<li><code>Profits:</code> Annual profit figures (in USD).</li>
+<li><code>Assets:</code> Total assets at the end of each fiscal year (in USD).</li>
+<li><code>Market Value:</code> Market valuation at the end of each fiscal year (in USD).</li>
+<li><code>Year:</code> Fiscal year of the reported figures.</li>
+</ul>
+<p>The data can be found at <code>https://data.world/aroissues/forbes-global-2000-2008-2019</code></p>
+<p><strong>Methodology</strong> The project involved linear regression modeling to predict future sales based on the assets of the companies. Historical data from the Forbes dataset was used to:</p>
+<ul>
+<li>Identify the top 5 performing companies in the retail industry for the latest available year based on sales.</li>
+<li>Extract historical sales and asset data for these top companies.</li>
+<li>Develop a predictive model using the historical assets to forecast sales for the following year.</li>
+<li>Tools used included R programming with libraries such as <code>dplyr</code> for data manipulation, <code>ggplot2</code> for data visualization, and <code>plotly</code> for creating interactive plots.</li>
+</ul>
+</section>
+<section id="sales-top-5-companies-in-2020-2023" class="level2">
+<h2 class="anchored" data-anchor-id="sales-top-5-companies-in-2020-2023">Sales: Top 5 companies in 2020-2023</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">2020</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">2021</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">2022</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">2023</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>top_companies_2020 <span class="ot">&lt;-</span> combined_forbes <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">select</span>(Company, Industry, Country, Sales, year) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Sales)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">mutate</span>(<span class="at">Sales =</span> <span class="fu">dollar</span>(Sales))</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">pander</span>(top_companies_2020)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 16%">
+<col style="width: 22%">
+<col style="width: 15%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Company</th>
+<th style="text-align: center;">Industry</th>
+<th style="text-align: center;">Country</th>
+<th style="text-align: center;">Sales</th>
+<th style="text-align: center;">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Walmart</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$523,964</td>
+<td style="text-align: center;">2020</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Amazon</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$296,274</td>
+<td style="text-align: center;">2020</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">CVS Health</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$256,756</td>
+<td style="text-align: center;">2020</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Costco Wholesale</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$158,350</td>
+<td style="text-align: center;">2020</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Walgreens</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$138,704</td>
+<td style="text-align: center;">2020</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>top_companies_2021 <span class="ot">&lt;-</span> combined_forbes <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">select</span>(Company, Industry, Country, Sales, year) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2021</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Sales)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">mutate</span>(<span class="at">Sales =</span> <span class="fu">dollar</span>(Sales))</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="fu">pander</span>(top_companies_2021)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 16%">
+<col style="width: 22%">
+<col style="width: 15%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Company</th>
+<th style="text-align: center;">Industry</th>
+<th style="text-align: center;">Country</th>
+<th style="text-align: center;">Sales</th>
+<th style="text-align: center;">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Walmart</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$559,151</td>
+<td style="text-align: center;">2021</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Amazon</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$386,064</td>
+<td style="text-align: center;">2021</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">CVS Health</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$268,654</td>
+<td style="text-align: center;">2021</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Costco Wholesale</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$178,626</td>
+<td style="text-align: center;">2021</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Walgreens</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$138,463</td>
+<td style="text-align: center;">2021</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>top_companies_2022 <span class="ot">&lt;-</span> combined_forbes <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">select</span>(Company, Industry, Country, Sales, year) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2022</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Sales)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">mutate</span>(<span class="at">Sales =</span> <span class="fu">dollar</span>(Sales))</span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="fu">pander</span>(top_companies_2022)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 16%">
+<col style="width: 22%">
+<col style="width: 15%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Company</th>
+<th style="text-align: center;">Industry</th>
+<th style="text-align: center;">Country</th>
+<th style="text-align: center;">Sales</th>
+<th style="text-align: center;">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Walmart</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$572,754</td>
+<td style="text-align: center;">2022</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Amazon</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$469,822</td>
+<td style="text-align: center;">2022</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">CVS Health</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$291,982</td>
+<td style="text-align: center;">2022</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Costco Wholesale</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$210,219</td>
+<td style="text-align: center;">2022</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">The Home Depot</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">Canada</td>
+<td style="text-align: center;">$151,157</td>
+<td style="text-align: center;">2022</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>top_companies_2023 <span class="ot">&lt;-</span> combined_forbes <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">select</span>(Company, Industry, Country, Sales,year) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2023</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Sales)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">mutate</span>(<span class="at">Sales =</span> <span class="fu">dollar</span>(Sales))</span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="fu">pander</span>(top_companies_2023)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 16%">
+<col style="width: 22%">
+<col style="width: 15%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Company</th>
+<th style="text-align: center;">Industry</th>
+<th style="text-align: center;">Country</th>
+<th style="text-align: center;">Sales</th>
+<th style="text-align: center;">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Walmart</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$611,289</td>
+<td style="text-align: center;">2023</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Amazon</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$524,897</td>
+<td style="text-align: center;">2023</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">CVS Health</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$331,171</td>
+<td style="text-align: center;">2023</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Costco Wholesale</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$234,390</td>
+<td style="text-align: center;">2023</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">The Home Depot</td>
+<td style="text-align: center;">Retailing</td>
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">$157,403</td>
+<td style="text-align: center;">2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="top-5-companies-sales-over-time" class="level2">
+<h2 class="anchored" data-anchor-id="top-5-companies-sales-over-time">Top 5 companies sales over time</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(top_companies_data, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> Sales<span class="sc">*</span><span class="dv">1000</span>, <span class="at">color =</span> Company, <span class="at">group =</span> Company, <span class="at">text =</span> <span class="fu">paste</span>(Company, <span class="st">"&lt;br&gt;Sales: $"</span>, scales<span class="sc">::</span><span class="fu">comma</span>(Sales<span class="sc">*</span><span class="dv">1000</span>), <span class="st">" million"</span>, <span class="at">sep =</span> <span class="st">" "</span>))) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span>  </span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">19</span>, <span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> T) <span class="sc">+</span>   </span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span>  </span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span> </span>
+<span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">theme</span>(</span>
+<span id="cb5-7"><a href="#cb5-7"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">hjust =</span> <span class="dv">0</span>),</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb5-9"><a href="#cb5-9"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb5-10"><a href="#cb5-10"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11"></a>    <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),  </span>
+<span id="cb5-12"><a href="#cb5-12"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),  </span>
+<span id="cb5-13"><a href="#cb5-13"></a>    <span class="at">panel.grid.minor.x =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb5-14"><a href="#cb5-14"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-16"><a href="#cb5-16"></a>    <span class="at">title =</span> <span class="st">"Sales Performance of Top 5 Companies from 2020 to 2023"</span>,</span>
+<span id="cb5-17"><a href="#cb5-17"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb5-18"><a href="#cb5-18"></a>    <span class="at">y =</span> <span class="st">"Sales"</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">min</span>(top_companies_data<span class="sc">$</span>year), <span class="fu">max</span>(top_companies_data<span class="sc">$</span>year), <span class="at">by =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb5-21"><a href="#cb5-21"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>())  </span>
+<span id="cb5-22"><a href="#cb5-22"></a></span>
+<span id="cb5-23"><a href="#cb5-23"></a>interactive_plot <span class="ot">&lt;-</span> <span class="fu">ggplotly</span>(gg, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span>
+<span id="cb5-24"><a href="#cb5-24"></a>interactive_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-10971949e5e916110c96" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-10971949e5e916110c96">{"x":{"data":[{"x":[2020,2021,2022,2023],"y":[296274000,386064000,469822000,524897000],"text":["Amazon <br>Sales: $ 296,274,000  million","Amazon <br>Sales: $ 386,064,000  million","Amazon <br>Sales: $ 469,822,000  million","Amazon <br>Sales: $ 524,897,000  million"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(102,194,165,1)","dash":"solid"},"hoveron":"points","name":"Amazon","legendgroup":"Amazon","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2020,2021,2022,2023],"y":[158350000,178626000,210219000,234390000],"text":["Costco Wholesale <br>Sales: $ 158,350,000  million","Costco Wholesale <br>Sales: $ 178,626,000  million","Costco Wholesale <br>Sales: $ 210,219,000  million","Costco Wholesale <br>Sales: $ 234,390,000  million"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(252,141,98,1)","dash":"solid"},"hoveron":"points","name":"Costco Wholesale","legendgroup":"Costco Wholesale","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2020,2021,2022,2023],"y":[256756000,268654000,291982000,331171000],"text":["CVS Health <br>Sales: $ 256,756,000  million","CVS Health <br>Sales: $ 268,654,000  million","CVS Health <br>Sales: $ 291,982,000  million","CVS Health <br>Sales: $ 331,171,000  million"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(141,160,203,1)","dash":"solid"},"hoveron":"points","name":"CVS Health","legendgroup":"CVS Health","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2022,2023],"y":[151157000,157403000],"text":["The Home Depot <br>Sales: $ 151,157,000  million","The Home Depot <br>Sales: $ 157,403,000  million"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(231,138,195,1)","dash":"solid"},"hoveron":"points","name":"The Home Depot","legendgroup":"The Home Depot","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2020,2021,2022,2023],"y":[138704000,138463000,135949000,133290000],"text":["Walgreens <br>Sales: $ 138,704,000  million","Walgreens <br>Sales: $ 138,463,000  million","Walgreens <br>Sales: $ 135,949,000  million","Walgreens <br>Sales: $ 133,290,000  million"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(166,216,84,1)","dash":"solid"},"hoveron":"points","name":"Walgreens","legendgroup":"Walgreens","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2020,2021,2022,2023],"y":[523964000,559151000,572754000,611289000],"text":["Walmart <br>Sales: $ 523,964,000  million","Walmart <br>Sales: $ 559,151,000  million","Walmart <br>Sales: $ 572,754,000  million","Walmart <br>Sales: $ 611,289,000  million"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(255,217,47,1)","dash":"solid"},"hoveron":"points","name":"Walmart","legendgroup":"Walmart","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2023,2022,2021,2020],"y":[524897000,469822000,386064000,296274000],"text":["Amazon <br>Sales: $ 524,897,000  million","Amazon <br>Sales: $ 469,822,000  million","Amazon <br>Sales: $ 386,064,000  million","Amazon <br>Sales: $ 296,274,000  million"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(102,194,165,1)","opacity":1,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(102,194,165,1)"}},"hoveron":"points","name":"Amazon","legendgroup":"Amazon","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2023,2022,2021,2020],"y":[234390000,210219000,178626000,158350000],"text":["Costco Wholesale <br>Sales: $ 234,390,000  million","Costco Wholesale <br>Sales: $ 210,219,000  million","Costco Wholesale <br>Sales: $ 178,626,000  million","Costco Wholesale <br>Sales: $ 158,350,000  million"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(252,141,98,1)","opacity":1,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(252,141,98,1)"}},"hoveron":"points","name":"Costco Wholesale","legendgroup":"Costco Wholesale","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2023,2022,2021,2020],"y":[331171000,291982000,268654000,256756000],"text":["CVS Health <br>Sales: $ 331,171,000  million","CVS Health <br>Sales: $ 291,982,000  million","CVS Health <br>Sales: $ 268,654,000  million","CVS Health <br>Sales: $ 256,756,000  million"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(141,160,203,1)","opacity":1,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(141,160,203,1)"}},"hoveron":"points","name":"CVS Health","legendgroup":"CVS Health","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2023,2022],"y":[157403000,151157000],"text":["The Home Depot <br>Sales: $ 157,403,000  million","The Home Depot <br>Sales: $ 151,157,000  million"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(231,138,195,1)","opacity":1,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(231,138,195,1)"}},"hoveron":"points","name":"The Home Depot","legendgroup":"The Home Depot","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2023,2022,2021,2020],"y":[133290000,135949000,138463000,138704000],"text":["Walgreens <br>Sales: $ 133,290,000  million","Walgreens <br>Sales: $ 135,949,000  million","Walgreens <br>Sales: $ 138,463,000  million","Walgreens <br>Sales: $ 138,704,000  million"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(166,216,84,1)","opacity":1,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(166,216,84,1)"}},"hoveron":"points","name":"Walgreens","legendgroup":"Walgreens","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2023,2022,2021,2020],"y":[611289000,572754000,559151000,523964000],"text":["Walmart <br>Sales: $ 611,289,000  million","Walmart <br>Sales: $ 572,754,000  million","Walmart <br>Sales: $ 559,151,000  million","Walmart <br>Sales: $ 523,964,000  million"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(255,217,47,1)","opacity":1,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(255,217,47,1)"}},"hoveron":"points","name":"Walmart","legendgroup":"Walmart","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.895392278953921,"r":6.6417600664176026,"b":41.843088418430881,"l":87.007056870070556},"font":{"color":"rgba(0,0,0,1)","family":"","size":13.283520132835198},"title":{"text":"<b> Sales Performance of Top 5 Companies from 2020 to 2023 <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969279},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2019.8499999999999,2023.1500000000001],"tickmode":"array","ticktext":["2020","2021","2022","2023"],"tickvals":[2020,2021,2022,2023],"categoryorder":"array","categoryarray":["2020","2021","2022","2023"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.3208800332087995,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":10.62681610626816},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"<b> Year <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969279}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[109390050,635188950],"tickmode":"array","ticktext":["200,000,000","300,000,000","400,000,000","500,000,000","600,000,000"],"tickvals":[200000000,300000000,400000000,500000000,600000000],"categoryorder":"array","categoryarray":["200,000,000","300,000,000","400,000,000","500,000,000","600,000,000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.3208800332088013,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":10.62681610626816},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.60379636967432737,"zeroline":false,"anchor":"x","title":{"text":"<b> Sales <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969279}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":10.62681610626816},"title":{"text":"Company","font":{"color":null,"family":null,"size":0}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"85476dc6386":{"x":{},"y":{},"colour":{},"text":{},"type":"scatter"},"8542087393a":{"x":{},"y":{},"colour":{},"text":{}}},"cur_data":"85476dc6386","visdat":{"85476dc6386":["function (y) ","x"],"8542087393a":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="predicting-the-sales-of-top-5-retail-companies" class="level2">
+<h2 class="anchored" data-anchor-id="predicting-the-sales-of-top-5-retail-companies">Predicting the Sales of Top 5 retail companies</h2>
+<section id="finding-the-best-simple-linear-model" class="level4">
+<h4 class="anchored" data-anchor-id="finding-the-best-simple-linear-model">Finding the Best Simple Linear Model</h4>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Best fit</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Second Best</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">Third Best</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false" href="">Not very useful</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>Assets_lm <span class="ot">=</span> <span class="fu">lm</span>(Sales <span class="sc">~</span> Assets, <span class="at">data =</span> combined_forbes)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">pander</span>(<span class="fu">summary</span>(Assets_lm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">&nbsp;</th>
+<th style="text-align: center;">Estimate</th>
+<th style="text-align: center;">Std. Error</th>
+<th style="text-align: center;">t value</th>
+<th style="text-align: center;">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>(Intercept)</strong></td>
+<td style="text-align: center;">2749</td>
+<td style="text-align: center;">3029</td>
+<td style="text-align: center;">0.9076</td>
+<td style="text-align: center;">0.3648</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Assets</strong></td>
+<td style="text-align: center;">1.239</td>
+<td style="text-align: center;">0.04291</td>
+<td style="text-align: center;">28.87</td>
+<td style="text-align: center;">1.087e-87</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table table-sm table-striped small">
+<caption>Fitting linear model: Sales ~ Assets</caption>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 30%">
+<col style="width: 11%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Observations</th>
+<th style="text-align: center;">Residual Std. Error</th>
+<th style="text-align: center;"><span class="math inline">\(R^2\)</span></th>
+<th style="text-align: center;">Adjusted <span class="math inline">\(R^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">295</td>
+<td style="text-align: center;">46022</td>
+<td style="text-align: center;">0.74</td>
+<td style="text-align: center;">0.7391</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">\[
+  \underbrace{Y_i}_\text{2024 Sales} = \beta_0 + \beta_1 \underbrace{X_i}_\text{Assets} + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)
+\]</span></p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>MarketValue_lm <span class="ot">=</span> <span class="fu">lm</span>(Sales <span class="sc">~</span> Market_Value, <span class="at">data =</span> combined_forbes)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">pander</span>(<span class="fu">summary</span>(MarketValue_lm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">&nbsp;</th>
+<th style="text-align: center;">Estimate</th>
+<th style="text-align: center;">Std. Error</th>
+<th style="text-align: center;">t value</th>
+<th style="text-align: center;">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>(Intercept)</strong></td>
+<td style="text-align: center;">22938</td>
+<td style="text-align: center;">3958</td>
+<td style="text-align: center;">5.796</td>
+<td style="text-align: center;">1.757e-08</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Market_Value</strong></td>
+<td style="text-align: center;">0.357</td>
+<td style="text-align: center;">0.02137</td>
+<td style="text-align: center;">16.7</td>
+<td style="text-align: center;">1.807e-44</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table table-sm table-striped small">
+<caption>Fitting linear model: Sales ~ Market_Value</caption>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 30%">
+<col style="width: 12%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Observations</th>
+<th style="text-align: center;">Residual Std. Error</th>
+<th style="text-align: center;"><span class="math inline">\(R^2\)</span></th>
+<th style="text-align: center;">Adjusted <span class="math inline">\(R^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">295</td>
+<td style="text-align: center;">64590</td>
+<td style="text-align: center;">0.4878</td>
+<td style="text-align: center;">0.486</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">\[
+  \underbrace{Y_i}_\text{2024 Sales} = \beta_0 + \beta_1 \underbrace{X_i}_\text{Market Value} + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)
+\]</span></p>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>Profit_lm <span class="ot">=</span> <span class="fu">lm</span>(Sales <span class="sc">~</span> Profits, <span class="at">data =</span> combined_forbes)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">pander</span>(<span class="fu">summary</span>(Profit_lm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">&nbsp;</th>
+<th style="text-align: center;">Estimate</th>
+<th style="text-align: center;">Std. Error</th>
+<th style="text-align: center;">t value</th>
+<th style="text-align: center;">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>(Intercept)</strong></td>
+<td style="text-align: center;">16999</td>
+<td style="text-align: center;">4207</td>
+<td style="text-align: center;">4.041</td>
+<td style="text-align: center;">6.802e-05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Profits</strong></td>
+<td style="text-align: center;">15.24</td>
+<td style="text-align: center;">0.9631</td>
+<td style="text-align: center;">15.83</td>
+<td style="text-align: center;">3.276e-41</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table table-sm table-striped small">
+<caption>Fitting linear model: Sales ~ Profits</caption>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 30%">
+<col style="width: 11%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Observations</th>
+<th style="text-align: center;">Residual Std. Error</th>
+<th style="text-align: center;"><span class="math inline">\(R^2\)</span></th>
+<th style="text-align: center;">Adjusted <span class="math inline">\(R^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">295</td>
+<td style="text-align: center;">66259</td>
+<td style="text-align: center;">0.461</td>
+<td style="text-align: center;">0.4591</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">\[
+  \underbrace{Y_i}_\text{2024 Sales} = \beta_0 + \beta_1 \underbrace{X_i}_\text{Profits} + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)
+\]</span></p>
+</div>
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>year_lm <span class="ot">=</span> <span class="fu">lm</span>(Sales <span class="sc">~</span> year, <span class="at">data =</span> combined_forbes)</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">pander</span>(<span class="fu">summary</span>(year_lm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">&nbsp;</th>
+<th style="text-align: center;">Estimate</th>
+<th style="text-align: center;">Std. Error</th>
+<th style="text-align: center;">t value</th>
+<th style="text-align: center;">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>(Intercept)</strong></td>
+<td style="text-align: center;">-7441390</td>
+<td style="text-align: center;">9287401</td>
+<td style="text-align: center;">-0.8012</td>
+<td style="text-align: center;">0.4236</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>year</strong></td>
+<td style="text-align: center;">3703</td>
+<td style="text-align: center;">4594</td>
+<td style="text-align: center;">0.8059</td>
+<td style="text-align: center;">0.4209</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table table-sm table-striped small">
+<caption>Fitting linear model: Sales ~ year</caption>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 30%">
+<col style="width: 15%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Observations</th>
+<th style="text-align: center;">Residual Std. Error</th>
+<th style="text-align: center;"><span class="math inline">\(R^2\)</span></th>
+<th style="text-align: center;">Adjusted <span class="math inline">\(R^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">295</td>
+<td style="text-align: center;">90149</td>
+<td style="text-align: center;">0.002212</td>
+<td style="text-align: center;">-0.001194</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span class="math display">\[
+  \underbrace{Y_i}_\text{2024 Sales} = \beta_0 + \beta_1 \underbrace{X_i}_\text{Year} + \epsilon_i \quad \text{where} \ \epsilon_i \sim N(0, \sigma^2)
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>combined_sales <span class="ot">&lt;-</span> combined_sales <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">mutate</span>(<span class="at">Sales_Millions =</span> Sales <span class="sc">*</span> <span class="dv">1000</span>,  </span>
+<span id="cb10-3"><a href="#cb10-3"></a>         <span class="at">Type =</span> <span class="fu">ifelse</span>(year <span class="sc">==</span> next_year, <span class="st">"Prediction"</span>, <span class="st">"Historical"</span>))</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(combined_sales, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> Sales_Millions, <span class="at">color =</span> Company, <span class="at">group =</span> Company,</span>
+<span id="cb10-6"><a href="#cb10-6"></a>                                 <span class="at">text =</span> <span class="fu">paste</span>(Company, <span class="st">"&lt;br&gt;Sales: $"</span>, <span class="fu">comma</span>(Sales_Millions), <span class="st">" million"</span>))) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">show.legend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">19</span>, <span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb10-9"><a href="#cb10-9"></a>  <span class="fu">scale_size_continuous</span>(<span class="at">guide =</span> <span class="st">'none'</span>) <span class="sc">+</span>  </span>
+<span id="cb10-10"><a href="#cb10-10"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
+<span id="cb10-11"><a href="#cb10-11"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a>  <span class="fu">theme</span>(</span>
+<span id="cb10-13"><a href="#cb10-13"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb10-14"><a href="#cb10-14"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb10-15"><a href="#cb10-15"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb10-16"><a href="#cb10-16"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb10-17"><a href="#cb10-17"></a>    <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb10-18"><a href="#cb10-18"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb10-19"><a href="#cb10-19"></a>    <span class="at">panel.grid.minor.x =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb10-20"><a href="#cb10-20"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-21"><a href="#cb10-21"></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-22"><a href="#cb10-22"></a>    <span class="at">title =</span> <span class="st">"Historical and Predicted Sales for Top 5 Companies"</span>,</span>
+<span id="cb10-23"><a href="#cb10-23"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb10-24"><a href="#cb10-24"></a>    <span class="at">y =</span> <span class="st">"Sales"</span></span>
+<span id="cb10-25"><a href="#cb10-25"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-26"><a href="#cb10-26"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">min</span>(combined_sales<span class="sc">$</span>year), <span class="fu">max</span>(combined_sales<span class="sc">$</span>year), <span class="at">by =</span> <span class="dv">1</span>)) <span class="sc">+</span>  </span>
+<span id="cb10-27"><a href="#cb10-27"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>())  </span>
+<span id="cb10-28"><a href="#cb10-28"></a></span>
+<span id="cb10-29"><a href="#cb10-29"></a>interactive_plot <span class="ot">&lt;-</span> <span class="fu">ggplotly</span>(gg, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span>
+<span id="cb10-30"><a href="#cb10-30"></a>interactive_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-2bed5549374f318c91de" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-2bed5549374f318c91de">{"x":{"data":[{"x":[2020,2021,2022,2023,2024],"y":[296274000,386064000,469822000,524897000,587207141.88047457],"text":["Amazon <br>Sales: $ 296,274,000  million","Amazon <br>Sales: $ 386,064,000  million","Amazon <br>Sales: $ 469,822,000  million","Amazon <br>Sales: $ 524,897,000  million","Amazon <br>Sales: $ 587,207,142  million"],"type":"scatter","mode":"lines+markers","line":{"width":3.7795275590551185,"color":"rgba(102,194,165,1)","dash":"solid"},"hoveron":"points","name":"Amazon","legendgroup":"Amazon","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(102,194,165,1)","opacity":1,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(102,194,165,1)"}},"frame":null},{"x":[2020,2021,2022,2023,2024],"y":[158350000,178626000,210219000,234390000,210544706.06813329],"text":["Costco Wholesale <br>Sales: $ 158,350,000  million","Costco Wholesale <br>Sales: $ 178,626,000  million","Costco Wholesale <br>Sales: $ 210,219,000  million","Costco Wholesale <br>Sales: $ 234,390,000  million","Costco Wholesale <br>Sales: $ 210,544,706  million"],"type":"scatter","mode":"lines+markers","line":{"width":3.7795275590551185,"color":"rgba(252,141,98,1)","dash":"solid"},"hoveron":"points","name":"Costco Wholesale","legendgroup":"Costco Wholesale","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(252,141,98,1)","opacity":1,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(252,141,98,1)"}},"frame":null},{"x":[2020,2021,2022,2023,2024],"y":[256756000,268654000,291982000,331171000,373972598.94108438],"text":["CVS Health <br>Sales: $ 256,756,000  million","CVS Health <br>Sales: $ 268,654,000  million","CVS Health <br>Sales: $ 291,982,000  million","CVS Health <br>Sales: $ 331,171,000  million","CVS Health <br>Sales: $ 373,972,599  million"],"type":"scatter","mode":"lines+markers","line":{"width":3.7795275590551185,"color":"rgba(141,160,203,1)","dash":"solid"},"hoveron":"points","name":"CVS Health","legendgroup":"CVS Health","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(141,160,203,1)","opacity":1,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(141,160,203,1)"}},"frame":null},{"x":[2022,2023,2024],"y":[151157000,157403000,219637930.21848935],"text":["The Home Depot <br>Sales: $ 151,157,000  million","The Home Depot <br>Sales: $ 157,403,000  million","The Home Depot <br>Sales: $ 219,637,930  million"],"type":"scatter","mode":"lines+markers","line":{"width":3.7795275590551185,"color":"rgba(231,138,195,1)","dash":"solid"},"hoveron":"points","name":"The Home Depot","legendgroup":"The Home Depot","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(231,138,195,1)","opacity":1,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(231,138,195,1)"}},"frame":null},{"x":[2020,2021,2022,2023,2024],"y":[523964000,559151000,572754000,611289000,377636608.29707342],"text":["Walmart <br>Sales: $ 523,964,000  million","Walmart <br>Sales: $ 559,151,000  million","Walmart <br>Sales: $ 572,754,000  million","Walmart <br>Sales: $ 611,289,000  million","Walmart <br>Sales: $ 377,636,608  million"],"type":"scatter","mode":"lines+markers","line":{"width":3.7795275590551185,"color":"rgba(166,216,84,1)","dash":"solid"},"hoveron":"points","name":"Walmart","legendgroup":"Walmart","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(166,216,84,1)","opacity":1,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(166,216,84,1)"}},"frame":null}],"layout":{"margin":{"t":43.895392278953921,"r":6.6417600664176026,"b":41.843088418430881,"l":87.007056870070556},"font":{"color":"rgba(0,0,0,1)","family":"","size":13.283520132835198},"title":{"text":"<b> Historical and Predicted Sales for Top 5 Companies <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969279},"x":0.5,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2019.8,2024.2],"tickmode":"array","ticktext":["2020","2021","2022","2023","2024"],"tickvals":[2020,2021,2022,2023,2024],"categoryorder":"array","categoryarray":["2020","2021","2022","2023","2024"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.3208800332087995,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":10.62681610626816},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"<b> Year <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969279}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[128150400,634295600],"tickmode":"array","ticktext":["200,000,000","300,000,000","400,000,000","500,000,000","600,000,000"],"tickvals":[200000000,300000000,400000000,500000000,600000000],"categoryorder":"array","categoryarray":["200,000,000","300,000,000","400,000,000","500,000,000","600,000,000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.3208800332088013,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":10.62681610626816},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.60379636967432737,"zeroline":false,"anchor":"x","title":{"text":"<b> Sales <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969279}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":10.62681610626816},"title":{"text":"Company","font":{"color":null,"family":null,"size":0}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"854312e17b6":{"x":{},"y":{},"colour":{},"text":{},"type":"scatter"},"85458641ab8":{"x":{},"y":{},"colour":{},"text":{}}},"cur_data":"854312e17b6","visdat":{"854312e17b6":["function (y) ","x"],"85458641ab8":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Above you can see that <code>Walmart</code> faced a large drop in Sales. This was caused by their lack of assets. While the drop in sales is unlikely for Walmart, it will be interesting to see how the model does once we have 2024 actuals.</p>
+<p><strong>Summary</strong></p>
+<p>While there are many factors that keep a company in business it is important to understand what is driving the company’s success. <code>Sales</code> is one of the most important areas for success in a business. It goes without say that there are many other factors that can contribute to the success of a company. In our model we had limited data, but with what we had we found that the best predictor of future sales was <code>Assets</code>. This makes sense, if a company has no cash, no inventory, or no property, etc. then it is pretty difficult to generate sales.</p>
+<p>Below I provided some more insights to the data for those interested.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Hide</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">More insights</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Industry Comparisons</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Country Comparisons</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">ggplot</span>(by_industry, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Industry, TotalSales), <span class="at">y =</span> TotalSales)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"firebrick"</span>) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top 10 Industries by Total Sales"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4"></a>       <span class="at">x =</span> <span class="st">"Industry"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5"></a>       <span class="at">y =</span> <span class="st">"Total Sales"</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">ggplot</span>(by_industry, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Industry, TotalProfits), <span class="at">y =</span> TotalProfits)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"firebrick"</span>) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top 10 Industries by Total Profits"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4"></a>       <span class="at">x =</span> <span class="st">"Industry"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5"></a>       <span class="at">y =</span> <span class="st">"Total Profits"</span>) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">ggplot</span>(by_industry, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Industry, TotalAssets), <span class="at">y =</span> TotalAssets)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"firebrick"</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top 10 Industries by Total Assets"</span>,</span>
+<span id="cb13-4"><a href="#cb13-4"></a>       <span class="at">x =</span> <span class="st">"Industry"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5"></a>       <span class="at">y =</span> <span class="st">"Total Assets"</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">ggplot</span>(by_industry, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Industry, TotalMarketValue), <span class="at">y =</span> TotalMarketValue)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"firebrick"</span>) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top 10 Industries by Total Market Value"</span>,</span>
+<span id="cb14-4"><a href="#cb14-4"></a>       <span class="at">x =</span> <span class="st">"Industry"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5"></a>       <span class="at">y =</span> <span class="st">"Total Market Value"</span>) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">ggplot</span>(by_country, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Country, TotalSales), <span class="at">y =</span> TotalSales)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"dodgerblue"</span>) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top 10 Countries by Total Sales"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4"></a>       <span class="at">x =</span> <span class="st">"Country"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5"></a>       <span class="at">y =</span> <span class="st">"Total Sales"</span>) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">ggplot</span>(by_country, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Country, TotalProfits), <span class="at">y =</span> TotalProfits)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"dodgerblue"</span>) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top 10 Countries by Total Profits"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4"></a>       <span class="at">x =</span> <span class="st">"Country"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5"></a>       <span class="at">y =</span> <span class="st">"Total Profits"</span>) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">ggplot</span>(by_country, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Country, TotalAssets), <span class="at">y =</span> TotalAssets)) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"dodgerblue"</span>) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top 10 Countries by Total Assets"</span>,</span>
+<span id="cb17-4"><a href="#cb17-4"></a>       <span class="at">x =</span> <span class="st">"Country"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5"></a>       <span class="at">y =</span> <span class="st">"Total Assets"</span>) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">ggplot</span>(by_country, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Country, TotalMarketValue), <span class="at">y =</span> TotalMarketValue)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"dodgerblue"</span>) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top 10 Countries by Total Market Value"</span>,</span>
+<span id="cb18-4"><a href="#cb18-4"></a>       <span class="at">x =</span> <span class="st">"Country"</span>,</span>
+<span id="cb18-5"><a href="#cb18-5"></a>       <span class="at">y =</span> <span class="st">"Total Market Value"</span>) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb18-9"><a href="#cb18-9"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>It appears that when <code>Total Sales</code> is high <code>Profits</code>,<code>Assets</code>, and <code>Market Value</code> all tend to follow a similar pattern.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
